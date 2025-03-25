@@ -4,7 +4,7 @@ export default function CharactersCard({ results }) {
             {results.map((char) => (
                 <div
                     key={char.id}
-                    className="flex flex-col p-4 text-center rounded-xl bg-gray-500"
+                    className="flex flex-col p-4 text-center rounded-xl shadow-2xs border-3 border-lime-400 shadow-gray-400 bg-cyan-600"
                 >
                     <p className="text-xl font-extrabold uppercase text-black">
                         {char.name}

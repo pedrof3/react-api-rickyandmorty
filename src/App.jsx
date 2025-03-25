@@ -1,11 +1,11 @@
-import DisplayCharacters from "./components/DisplayCharacters";
+import CharactersPage from "./components/CharactersPage";
 import Nav from "./components/Nav";
 
 export default function App() {
     return (
         <div>
             <Nav />
-            <DisplayCharacters />
+            <CharactersPage />
         </div>
     );
 }
