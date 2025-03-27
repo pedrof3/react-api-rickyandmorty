@@ -13,7 +13,12 @@ export default function Pagination({ info, currentPage, changePage }) {
     return (
         <div className="my-8">
             <ul className="flex flex-row gap-0.5 rounded-md border-2 border-gray-400 bg-gray-400">
-                <li className="cursor-pointer px-2 rounded-l-md bg-white hover:bg-cyan-200 hover:font-bold">
+                <li
+                    className="cursor-pointer px-2 rounded-l-md bg-white hover:bg-cyan-200 hover:font-bold"
+                    onClick={() =>
+                        currentPage != 1 ? changePage(currentPage - 1) : null
+                    }
+                >
                     <ChevronsLeft />
                 </li>
                 {setPages(currentPage).map((page) => (
@@ -32,7 +37,14 @@ export default function Pagination({ info, currentPage, changePage }) {
                         </div>
                     </li>
                 ))}
-                <li className="cursor-pointer px-2 rounded-r-md bg-white hover:bg-cyan-200 hover:font-bold">
+                <li
+                    className="cursor-pointer px-2 rounded-r-md bg-white hover:bg-cyan-200 hover:font-bold"
+                    onClick={() =>
+                        currentPage != info.pages
+                            ? changePage(currentPage + 1)
+                            : null
+                    }
+                >
                     <ChevronsRight />
                 </li>
             </ul>
