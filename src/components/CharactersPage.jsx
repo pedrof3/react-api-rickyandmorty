@@ -9,19 +9,18 @@ export default function CharactersPage() {
     const [results, setResults] = useState(null);
     const [loading, setLoading] = useState(true);
     const [fail, setFail] = useState(null);
-    const [page, setPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
         const fetchApi = async () => {
             try {
-                const URL = `https://rickandmortyapi.com/api/character/?page=${page}`;
+                const URL = `https://rickandmortyapi.com/api/character/?page=${currentPage}`;
                 const request = await fetch(URL);
 
                 if (request.status === 200) {
                     const obj = await request.json();
                     setInfo(obj["info"]);
                     setResults(obj["results"]);
-                    console.log(obj);
                 } else {
                     setFail(request.status);
                 }
@@ -33,11 +32,11 @@ export default function CharactersPage() {
             }
         };
         fetchApi();
-    }, [page]);
+    }, [currentPage]);
 
     function changePage(page) {
-        setPage(page);
-        return URL;
+        setCurrentPage(page);
+        window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     if (loading) {
@@ -50,7 +49,11 @@ export default function CharactersPage() {
     return (
         <div className="flex flex-col justify-center items-center">
             <CharactersCard results={results} />
-            <Pagination info={info} changePage={changePage} />
+            <Pagination
+                info={info}
+                currentPage={currentPage}
+                changePage={changePage}
+            />
         </div>
     );
 }
