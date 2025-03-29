@@ -3,6 +3,7 @@ import CharactersCard from "./CharactersCard";
 import LoadingPage from "./LoadingPage";
 import ErrorPage from "./ErrorPage";
 import Pagination from "./Pagination";
+import Nav from "./Nav";
 
 export default function CharactersPage() {
     const [info, setInfo] = useState(null);
@@ -48,6 +49,7 @@ export default function CharactersPage() {
     }
     return (
         <div className="flex flex-col justify-center items-center">
+            <Nav />
             <CharactersCard results={results} />
             <Pagination
                 info={info}
